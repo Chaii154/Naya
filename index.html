@@ -517,6 +517,106 @@
     color: rgba(242,206,109,.55);
   }
 
+  /* ---------- registration form ---------- */
+  .register-wrap{
+    width:100%; max-width: 620px;
+    margin-top: 70px;
+    opacity:0;
+    animation: fadeUp 1s ease forwards 1.55s;
+  }
+  .register-card{
+    position:relative;
+    border-radius: 14px;
+    padding: 38px 30px 32px;
+    background: linear-gradient(180deg, rgba(31,17,17,.75), rgba(6,3,2,.94));
+    border: 1px solid rgba(201,153,47,.45);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.5), 0 20px 55px rgba(0,0,0,.55), 0 0 45px rgba(196,148,40,.1);
+    overflow:hidden;
+  }
+  .register-card::before{
+    content:"";
+    position:absolute; inset:-50%;
+    background: radial-gradient(circle at 50% 0%, rgba(242,206,109,.1), transparent 60%);
+    pointer-events:none;
+  }
+  .register-head{ position:relative; z-index:1; margin-bottom: 26px; }
+  .register-title{
+    font-family:'Cinzel Decorative', serif; font-weight:700;
+    font-size: clamp(22px, 4vw, 28px);
+    color: var(--gold-light);
+    margin: 4px 0 12px;
+  }
+  .register-desc{
+    font-size: 15px; font-style:italic; color:#e9d8ac;
+    max-width: 480px; margin: 0 auto; line-height:1.6;
+  }
+
+  .register-form{
+    position:relative; z-index:1;
+    display:grid; grid-template-columns: 1fr 1fr; gap: 18px 20px;
+    text-align:left;
+  }
+  .field{ display:flex; flex-direction:column; gap:8px; }
+  .field-full{ grid-column: 1 / -1; }
+  .field label{
+    font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:.22em;
+    text-transform:uppercase; color: var(--gold);
+  }
+  .field input, .field textarea{
+    font-family:'Cormorant Garamond', serif;
+    font-size: 16px; color: var(--gold-light);
+    background: rgba(0,0,0,.35);
+    border: 1px solid rgba(201,153,47,.35);
+    border-radius: 6px;
+    padding: 11px 14px;
+    outline:none;
+    transition: border-color .25s ease, box-shadow .25s ease, background .25s ease;
+  }
+  .field input::placeholder, .field textarea::placeholder{ color: rgba(237,220,170,.4); }
+  .field input:focus, .field textarea:focus{
+    border-color: var(--gold-bright);
+    box-shadow: 0 0 0 3px rgba(242,206,109,.15);
+    background: rgba(0,0,0,.5);
+  }
+  .field textarea{ resize: vertical; min-height: 80px; font-family:'Cormorant Garamond', serif; }
+  .field input:invalid.touched, .field textarea:invalid.touched{ border-color: #b4453f; }
+
+  .register-submit{
+    grid-column: 1 / -1;
+    position:relative;
+    margin-top: 6px;
+    font-family:'Cinzel', serif; font-weight:700; letter-spacing:.2em;
+    text-transform:uppercase; font-size: 13px; color:#1a0e05;
+    padding: 16px 20px; border-radius:6px;
+    border:1px solid rgba(255,240,190,.8);
+    background: linear-gradient(180deg, var(--gold-light), var(--gold-bright) 45%, var(--gold-deep));
+    box-shadow: 0 0 0 1px rgba(0,0,0,.4), 0 10px 26px rgba(196,148,40,.3), inset 0 1px 0 rgba(255,255,255,.6);
+    cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    transition: transform .25s ease, opacity .25s ease;
+  }
+  .register-submit:hover{ transform: translateY(-2px); }
+  .register-submit:disabled{ opacity:.65; cursor:not-allowed; transform:none; }
+  .register-submit .btn-label{ display:flex; align-items:center; gap:10px; }
+  .register-submit svg{ width:18px; height:18px; }
+  .register-submit .btn-spinner{
+    display:none; width:16px; height:16px; border-radius:50%;
+    border: 2px solid rgba(26,14,5,.3); border-top-color:#1a0e05;
+    animation: spin .7s linear infinite;
+  }
+  .register-submit.loading .btn-label{ display:none; }
+  .register-submit.loading .btn-spinner{ display:inline-block; }
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .register-status{
+    grid-column: 1 / -1;
+    font-family:'Cinzel', serif; font-size:12px; letter-spacing:.08em;
+    text-align:center; min-height: 18px;
+    padding-top: 4px;
+  }
+  .register-status.success{ color:#8fe3a0; }
+  .register-status.error{ color:#f18e8e; }
+
   /* ---------- music control ---------- */
   #music-btn{
     position:fixed;
@@ -641,6 +741,15 @@
     a.cta{ padding: 16px 26px; font-size: 12px; gap: 10px; }
     a.cta svg{ width:17px; height:17px; }
     .cta-note{ font-size: 9px; letter-spacing:.22em; }
+
+    .register-wrap{ margin-top: 50px; }
+    .register-card{ padding: 28px 18px 24px; border-radius: 12px; }
+    .register-title{ font-size: 20px; }
+    .register-desc{ font-size: 13.5px; }
+    .register-form{ grid-template-columns: 1fr; gap: 14px; }
+    .field label{ font-size: 9.5px; }
+    .field input, .field textarea{ font-size: 15px; padding: 10px 12px; }
+    .register-submit{ font-size: 12px; padding: 14px 18px; }
 
     #music-btn{ width: 50px; height: 50px; bottom: 16px; right: 16px; }
     #music-label{ display:none; }
@@ -794,6 +903,54 @@
     </a>
     <div class="cta-note">Ketuk untuk masuk ke Club Royal Lounge di Roblox</div>
   </div>
+
+  <!-- ================= REGISTRATION ================= -->
+  <section class="register-wrap" id="register">
+    <div class="register-card">
+      <div class="register-head">
+        <div class="badge">✦ Pendaftaran Fams ✦</div>
+        <h3 class="register-title">Daftarkan Fams Kamu</h3>
+        <p class="register-desc">Isi form di bawah untuk mendaftarkan fams / clan kalian sebagai tamu resmi Grand Opening Club Royal Lounge.</p>
+      </div>
+
+      <form id="register-form" class="register-form" novalidate>
+        <div class="field">
+          <label for="f-owner">Owner Fams</label>
+          <input type="text" id="f-owner" name="owner" placeholder="Nama owner fams" required autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="f-name">Name Fams</label>
+          <input type="text" id="f-name" name="name" placeholder="Nama lengkap fams / clan" required autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="f-abbr">Nama Singkatan Fams</label>
+          <input type="text" id="f-abbr" name="abbr" placeholder="Contoh: RYL" required autocomplete="off">
+        </div>
+
+        <div class="field">
+          <label for="f-count">Jumlah Anggota Join</label>
+          <input type="number" id="f-count" name="count" placeholder="Contoh: 10" min="1" required>
+        </div>
+
+        <div class="field field-full">
+          <label for="f-welcome">Text Sambutan Join</label>
+          <textarea id="f-welcome" name="welcome" rows="3" placeholder="Tulis sambutan singkat dari fams kalian..." required></textarea>
+        </div>
+
+        <button type="submit" id="register-btn" class="register-submit">
+          <span class="btn-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1a0e05" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>
+            Daftar Sekarang
+          </span>
+          <span class="btn-spinner"></span>
+        </button>
+
+        <div id="register-status" class="register-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
 </main>
 
 <footer>Club Royal Lounge — Grand Opening · Undangan Digital</footer>
@@ -965,6 +1122,86 @@ openBtn.addEventListener('click', () => {
   }
   tick();
   setInterval(tick, 1000);
+})();
+
+/* ================= registration -> Discord webhook ================= */
+(function(){
+  const WEBHOOK_URL = 'https://discord.com/api/webhooks/1542601402877218829/Ra1R0j-AHlbjd_kLpENdRNhKSf7SA0hQbmOuQP5tgaRc0FvRYXEZ9mCPLCffm-HO6_XJ';
+  const form = document.getElementById('register-form');
+  const btn = document.getElementById('register-btn');
+  const status = document.getElementById('register-status');
+  if(!form) return;
+
+  const fields = form.querySelectorAll('input, textarea');
+  fields.forEach(f => {
+    f.addEventListener('blur', () => f.classList.add('touched'));
+  });
+
+  function escapeMd(str){
+    return String(str).replace(/([*_`~|>])/g, '\\$1');
+  }
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    fields.forEach(f => f.classList.add('touched'));
+
+    if(!form.checkValidity()){
+      status.textContent = 'Mohon lengkapi semua kolom yang wajib diisi.';
+      status.className = 'register-status error';
+      return;
+    }
+
+    const owner = form.owner.value.trim();
+    const name = form.name.value.trim();
+    const abbr = form.abbr.value.trim();
+    const count = form.count.value.trim();
+    const welcome = form.welcome.value.trim();
+
+    btn.disabled = true;
+    btn.classList.add('loading');
+    status.textContent = '';
+    status.className = 'register-status';
+
+    const payload = {
+      username: 'Club Royal Lounge — Registration',
+      embeds: [{
+        title: '👑 Pendaftaran Fams Baru',
+        description: 'Ada fams baru yang mendaftar untuk Grand Opening Club Royal Lounge!',
+        color: parseInt('F2CE6D', 16),
+        fields: [
+          { name: '👤 Owner Fams', value: escapeMd(owner) || '-', inline: true },
+          { name: '🏷️ Name Fams', value: escapeMd(name) || '-', inline: true },
+          { name: '🔖 Singkatan', value: escapeMd(abbr) || '-', inline: true },
+          { name: '👥 Jumlah Anggota Join', value: escapeMd(count) || '-', inline: true },
+          { name: '💬 Text Sambutan Join', value: escapeMd(welcome) || '-', inline: false }
+        ],
+        footer: { text: 'Club Royal Lounge · Grand Opening 1 September 2026, 19:00 WIB' },
+        timestamp: new Date().toISOString()
+      }]
+    };
+
+    try{
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if(res.ok || res.status === 204){
+        status.textContent = '✦ Pendaftaran berhasil dikirim! Sampai jumpa di Grand Opening ✦';
+        status.className = 'register-status success';
+        form.reset();
+        fields.forEach(f => f.classList.remove('touched'));
+      } else {
+        throw new Error('Webhook responded with ' + res.status);
+      }
+    } catch(err){
+      status.textContent = 'Gagal mengirim pendaftaran. Coba lagi sebentar lagi.';
+      status.className = 'register-status error';
+    } finally {
+      btn.disabled = false;
+      btn.classList.remove('loading');
+    }
+  });
 })();
 </script>
 </body>

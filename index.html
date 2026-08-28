@@ -428,6 +428,53 @@
   }
   .detail .value{ font-size:19px; color: var(--gold-light); }
 
+  /* ---------- shareable poster text ---------- */
+  .poster-wrap{
+    width:min(600px, 100%);
+    margin: 34px 0 6px;
+    opacity:0;
+    animation: fadeUp 1.1s ease forwards 1.2s;
+  }
+  .poster-card{
+    position:relative;
+    border-radius: 12px;
+    padding: 24px 22px 22px;
+    background: linear-gradient(180deg, rgba(20,11,11,.85), rgba(6,3,2,.95));
+    border: 1px solid rgba(201,153,47,.4);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.5), 0 16px 40px rgba(0,0,0,.5);
+    text-align:left;
+  }
+  .poster-tag{
+    font-family:'Cinzel', serif; font-size:10.5px; letter-spacing:.24em;
+    text-transform:uppercase; color: var(--gold);
+    margin-bottom: 14px; text-align:center;
+  }
+  .poster-text{
+    font-family:'Cormorant Garamond', serif;
+    white-space: pre-wrap; word-wrap:break-word;
+    font-size: 15px; line-height:1.75; color:#eddcaa;
+    background:none; border:none; margin:0 0 18px;
+  }
+  .copy-btn{
+    width:100%;
+    display:flex; align-items:center; justify-content:center; gap:9px;
+    font-family:'Cinzel', serif; font-weight:700; letter-spacing:.16em;
+    text-transform:uppercase; font-size:11.5px; color: var(--gold-bright);
+    background: rgba(242,206,109,.08);
+    border: 1px solid rgba(242,206,109,.4);
+    border-radius: 6px;
+    padding: 12px 16px;
+    cursor:pointer;
+    transition: background .25s ease, color .25s ease, border-color .25s ease;
+  }
+  .copy-btn svg{ width:16px; height:16px; }
+  .copy-btn:hover{ background: rgba(242,206,109,.16); }
+  .copy-btn.copied{
+    background: rgba(143,227,160,.14);
+    border-color: rgba(143,227,160,.55);
+    color:#8fe3a0;
+  }
+
   /* ---------- countdown ---------- */
   .countdown-label{
     font-family:'Cinzel', serif; font-size:11px; letter-spacing:.4em;
@@ -517,6 +564,21 @@
     color: rgba(242,206,109,.55);
   }
 
+  /* ---------- visitor counter ---------- */
+  .visitor-counter{
+    display:inline-flex; align-items:center; gap:8px;
+    margin-top: 22px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(242,206,109,.06);
+    border: 1px solid rgba(201,153,47,.35);
+    color: var(--gold-bright);
+    font-family:'Cinzel', serif; font-size:11px; letter-spacing:.06em;
+    opacity:0; animation: fadeUp 1s ease forwards 1.6s;
+  }
+  .visitor-counter svg{ width:15px; height:15px; flex-shrink:0; }
+  .visitor-counter #visitor-count{ color: var(--gold-light); font-weight:700; }
+
   /* ---------- registration form ---------- */
   .register-wrap{
     width:100%; max-width: 620px;
@@ -550,6 +612,18 @@
     font-size: 15px; font-style:italic; color:#e9d8ac;
     max-width: 480px; margin: 0 auto; line-height:1.6;
   }
+  .register-notice{
+    display:flex; align-items:flex-start; gap:10px;
+    max-width: 480px; margin: 18px auto 0;
+    text-align:left;
+    background: rgba(242,206,109,.08);
+    border: 1px solid rgba(242,206,109,.35);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 13.5px; line-height:1.6; color:#f0e2b8;
+  }
+  .register-notice .notice-icon{ font-size:16px; line-height:1.4; flex-shrink:0; }
+  .register-notice b{ color: var(--gold-bright); }
 
   .register-form{
     position:relative; z-index:1;
@@ -725,6 +799,11 @@
     .banner-title{ font-size: 18px; }
     .banner-sub{ font-size: 9.5px; letter-spacing:.24em; }
 
+    .poster-wrap{ margin: 26px 0 4px; }
+    .poster-card{ padding: 18px 16px 16px; }
+    .poster-text{ font-size: 13.5px; line-height:1.65; }
+    .copy-btn{ font-size: 10.5px; padding: 11px 14px; }
+
     .countdown-label{ font-size: 9.5px; letter-spacing:.3em; margin: 30px 0 12px; }
     .countdown{ gap: 7px; }
     .cd-box{ min-width: 50px; padding: 9px 6px 8px; }
@@ -741,6 +820,8 @@
     a.cta{ padding: 16px 26px; font-size: 12px; gap: 10px; }
     a.cta svg{ width:17px; height:17px; }
     .cta-note{ font-size: 9px; letter-spacing:.22em; }
+    .visitor-counter{ font-size: 9.5px; padding: 7px 13px; margin-top: 18px; }
+    .visitor-counter svg{ width:13px; height:13px; }
 
     .register-wrap{ margin-top: 50px; }
     .register-card{ padding: 28px 18px 24px; border-radius: 12px; }
@@ -876,6 +957,33 @@
     </div>
   </div>
 
+  <!-- ================= SHAREABLE POSTER TEXT ================= -->
+  <div class="poster-wrap">
+    <div class="poster-card">
+      <div class="poster-tag">📣 Teks Undangan — Siap Dibagikan</div>
+      <pre class="poster-text" id="poster-text">🎉 GRAND OPENING — ROYAL LOUNGE 👑✨
+Akhirnya waktunya tiba!
+Kami mengundang kalian semua untuk hadir dan meramaikan Grand Opening Royal Lounge di Roblox. 🥂🎶
+
+📅 Tanggal: 1 September 2026
+⏰ Jam: 19:00 WIB — Sampai Selesai
+📍 ROYAL LOUNGE
+
+Nikmati suasana club yang elegan, musik, dance, hangout bareng teman, dan keseruan lainnya di malam spesial pembukaan Royal Lounge! 🔥👑
+Ajak teman, sahabat, clan, komunitas, dan siapa pun yang mau party bareng. Jangan sampai ketinggalan! 💃🕺
+
+💌 Undangan &amp; informasi lengkap:
+https://chaii154.github.io/ROYAL-LOUNGE-CLUB/
+
+✨ SAVE THE DATE — 1 SEPTEMBER 2026
+👑 ROYAL LOUNGE — FEEL THE MUSIC, ENJOY THE NIGHT.</pre>
+      <button type="button" id="copy-poster-btn" class="copy-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>
+        <span>Salin Teks Undangan</span>
+      </button>
+    </div>
+  </div>
+
   <div class="countdown-label">Menuju Grand Opening</div>
   <div class="countdown" id="countdown">
     <div class="cd-box"><div class="cd-num" id="cd-days">00</div><div class="cd-unit">Hari</div></div>
@@ -904,6 +1012,11 @@
     <div class="cta-note">Ketuk untuk masuk ke Club Royal Lounge di Roblox</div>
   </div>
 
+  <div class="visitor-counter" id="visitor-counter">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <span><span id="visitor-count">…</span> orang sudah membuka undangan ini</span>
+  </div>
+
   <!-- ================= REGISTRATION ================= -->
   <section class="register-wrap" id="register">
     <div class="register-card">
@@ -911,6 +1024,15 @@
         <div class="badge">✦ Pendaftaran Fams ✦</div>
         <h3 class="register-title">Daftarkan Fams Kamu</h3>
         <p class="register-desc">Isi form di bawah untuk mendaftarkan fams / clan kalian sebagai tamu resmi Grand Opening Club Royal Lounge.</p>
+        <div class="register-notice">
+          <span class="notice-icon">ℹ️</span>
+          <span>
+            <b>100% GRATIS — form ini BUKAN pembayaran, BUKAN tiket, dan tidak ada biaya apa pun.</b><br>
+            Pendaftaran ini cuma buat kasih tahu <b>owner &amp; admin Royal Lounge</b> perkiraan
+            berapa fams dan berapa orang yang bakal hadir di Grand Opening nanti, biar persiapan acaranya lebih matang.
+            Isi santai aja ya, nggak perlu ragu! 😊
+          </span>
+        </div>
       </div>
 
       <form id="register-form" class="register-form" novalidate>
@@ -1122,6 +1244,75 @@ openBtn.addEventListener('click', () => {
   }
   tick();
   setInterval(tick, 1000);
+})();
+
+/* ================= copy poster text ================= */
+(function(){
+  const btn = document.getElementById('copy-poster-btn');
+  const posterEl = document.getElementById('poster-text');
+  if(!btn || !posterEl) return;
+  const label = btn.querySelector('span');
+  const originalLabel = label.textContent;
+
+  btn.addEventListener('click', async () => {
+    const text = posterEl.textContent;
+    try{
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('copied');
+      label.textContent = 'Tersalin! ✔';
+      setTimeout(() => {
+        btn.classList.remove('copied');
+        label.textContent = originalLabel;
+      }, 2200);
+    } catch(err){
+      label.textContent = 'Gagal menyalin, coba manual';
+      setTimeout(() => { label.textContent = originalLabel; }, 2200);
+    }
+  });
+})();
+
+/* ================= unique visitor counter ================= */
+(function(){
+  const el = document.getElementById('visitor-count');
+  if(!el) return;
+
+  const BASE = 'https://countapi.mileshilliard.com/api/v1';
+  // ganti bagian belakang ini kalau mau pakai key unik lain
+  const KEY = 'royal-lounge-club-chaii154-unique-visitors';
+  const FLAG = 'rl_visited_v1';
+
+  async function run(){
+    try{
+      let value;
+      if(!localStorage.getItem(FLAG)){
+        // pertama kali browser ini buka undangan -> hitung +1
+        const res = await fetch(`${BASE}/hit/${KEY}`);
+        const data = await res.json();
+        value = data.value;
+        localStorage.setItem(FLAG, '1');
+      } else {
+        // sudah pernah buka sebelumnya -> cuma ambil angka, TIDAK nambah lagi
+        const res = await fetch(`${BASE}/get/${KEY}`);
+        const data = await res.json();
+        value = data.value;
+      }
+      el.textContent = value ?? '0';
+    } catch(err){
+      el.textContent = '—';
+    }
+  }
+  run();
 })();
 
 /* ================= registration -> Discord webhook ================= */
